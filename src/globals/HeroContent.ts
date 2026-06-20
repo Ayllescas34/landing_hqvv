@@ -11,7 +11,7 @@ export const HeroContent: GlobalConfig = {
       name: 'title',
       type: 'text',
       label: 'Título',
-      defaultValue: 'Hotel Boutique Quinta Vista Verde',
+      defaultValue: 'Hotel Quinta Vista Verde',
     },
     {
       name: 'subtitle',

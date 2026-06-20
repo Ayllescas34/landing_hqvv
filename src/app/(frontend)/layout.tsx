@@ -26,9 +26,9 @@ const cormorant = Cormorant_Garamond({
 })
 
 const siteUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
-const siteTitle = 'Hotel Boutique Quinta Vista Verde — Antigua Guatemala'
+const siteTitle = 'Hotel Quinta Vista Verde — Antigua Guatemala'
 const siteDescription =
-  'Descubre nuestro hotel boutique familiar en Antigua Guatemala. Habitaciones confortables, desayunos a la carta, jardines exuberantes y vista al Volcán de Agua.'
+  'Descubre nuestro hotel familiar en Antigua Guatemala. Habitaciones confortables, desayunos a la carta, jardines exuberantes y vista al Volcán de Agua.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -39,15 +39,14 @@ export const metadata: Metadata = {
   description: siteDescription,
   keywords: [
     'hotel Antigua Guatemala',
-    'hotel boutique Antigua',
     'hospedaje Antigua Guatemala',
     'hotel familiar Guatemala',
     'Quinta Vista Verde',
     'volcán de agua Antigua',
     'hotel jardines Antigua',
   ],
-  authors: [{ name: 'Hotel Boutique Quinta Vista Verde' }],
-  creator: 'Hotel Boutique Quinta Vista Verde',
+  authors: [{ name: 'Hotel Quinta Vista Verde' }],
+  creator: 'Hotel Quinta Vista Verde',
   robots: {
     index: true,
     follow: true,
@@ -63,7 +62,7 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'es_GT',
     url: siteUrl,
-    siteName: 'Hotel Boutique Quinta Vista Verde',
+    siteName: 'Hotel Quinta Vista Verde',
     title: siteTitle,
     description: siteDescription,
     images: [
@@ -71,7 +70,7 @@ export const metadata: Metadata = {
         url: '/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Hotel Boutique Quinta Vista Verde — Antigua Guatemala',
+        alt: 'Hotel Quinta Vista Verde — Antigua Guatemala',
       },
     ],
   },
@@ -80,6 +79,10 @@ export const metadata: Metadata = {
     title: siteTitle,
     description: siteDescription,
     images: ['/og-image.jpg'],
+  },
+  icons: {
+    icon: '/media/logo.jpg',
+    apple: '/media/logo.jpg',
   },
   alternates: {
     canonical: siteUrl,
