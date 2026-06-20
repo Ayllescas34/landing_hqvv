@@ -49,11 +49,10 @@ export default buildConfig({
     ? postgresAdapter({
         pool: {
           connectionString: process.env.DATABASE_URI!,
-          // The Neon pooler manages backend connections — keep Lambda pool small.
-          // No connectionTimeoutMillis: Neon pooler's cold-start can take ~5s on
-          // free tier and we don't want races between concurrent requests to fail.
-          max: 2,
-          idleTimeoutMillis: 30_000,
+          // max: 3 allows concurrent queries on same Lambda without exhausting
+          // Neon's direct-endpoint limit (5). No connectionTimeoutMillis so the
+          // initial schema migration (first deploy) isn't cut short.
+          max: 3,
         },
       })
     : sqliteAdapter({
