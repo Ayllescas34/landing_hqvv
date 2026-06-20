@@ -49,8 +49,10 @@ export default buildConfig({
     ? postgresAdapter({
         pool: {
           connectionString: process.env.DATABASE_URI!,
-          // Serverless-safe: max 1 connection per lambda to avoid exhausting Neon pool
           max: 1,
+          // Fail fast if DB is unreachable — page renders with fallback instead of hanging
+          connectionTimeoutMillis: 10_000,
+          idleTimeoutMillis: 30_000,
         },
       })
     : sqliteAdapter({
