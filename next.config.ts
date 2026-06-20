@@ -38,7 +38,7 @@ const nextConfig: NextConfig = {
     ]
   },
 
-  webpack(config) {
+  webpack(config, { isServer }) {
     // Replace Monaco Editor with a textarea stub to fix the React 19 +
     // React Compiler crash in @payloadcms/ui@3.85.1 (useMonaco returns
     // null before init, destructuring crashes without a null check).
@@ -46,6 +46,18 @@ const nextConfig: NextConfig = {
       process.cwd(),
       'src/stubs/monaco-editor.tsx',
     )
+
+    if (!isServer) {
+      // @payloadcms/storage-vercel-blob/client imports getFileKey from
+      // @payloadcms/plugin-cloud-storage/utilities, whose barrel also exports
+      // resolveSignedURLKey → payload internals → undici → node:* built-ins.
+      // Redirect to a client-safe stub that only contains browser-compatible code.
+      config.resolve.alias['@payloadcms/plugin-cloud-storage/utilities'] = path.resolve(
+        process.cwd(),
+        'src/stubs/cloud-storage-utilities.js',
+      )
+    }
+
     return config
   },
 }
