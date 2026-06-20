@@ -49,9 +49,10 @@ export default buildConfig({
     ? postgresAdapter({
         pool: {
           connectionString: process.env.DATABASE_URI!,
-          max: 1,
-          // Fail fast if DB is unreachable — page renders with fallback instead of hanging
-          connectionTimeoutMillis: 10_000,
+          // The Neon pooler manages backend connections — keep Lambda pool small.
+          // No connectionTimeoutMillis: Neon pooler's cold-start can take ~5s on
+          // free tier and we don't want races between concurrent requests to fail.
+          max: 2,
           idleTimeoutMillis: 30_000,
         },
       })
