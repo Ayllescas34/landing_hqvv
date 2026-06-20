@@ -17,7 +17,8 @@ const Layout = ({ children }: Args) =>
     children,
     config: config as unknown as Promise<SanitizedConfig>,
     importMap,
-    serverFunction: handleServerFunctions,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    serverFunction: handleServerFunctions as any,
   })
 
 export default Layout
