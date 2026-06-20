@@ -4,6 +4,8 @@
 // first call, which exceeds Next.js's 60s static generation timeout.
 // The page renders fresh on every request, which is correct for CMS content.
 export const dynamic = 'force-dynamic'
+// Allow up to 60s on the first request — Payload runs DB migrations on cold start
+export const maxDuration = 60
 
 import { getPayload, type SanitizedConfig } from 'payload'
 import configPromise from '@payload-config'
