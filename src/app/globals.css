@@ -1,0 +1,91 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --verde-bosque: #0f4d3a;
+  --verde-jardin: #5c8c5a;
+  --lavanda: #b7a5d8;
+  --crema: #f7f2e8;
+  --beige: #e8dfc9;
+  --madera: #5b3a29;
+  --piedra: #6e6e6e;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-inter), system-ui, sans-serif;
+  background-color: var(--crema);
+  color: #2d2d2d;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Botanical divider */
+.botanical-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--verde-bosque), transparent);
+  margin: 0 auto;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--crema);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--verde-jardin);
+  border-radius: 3px;
+}
+
+/* Section spacing */
+.section-padding {
+  @apply py-20 md:py-28;
+}
+
+/* Cards */
+.card-hover {
+  @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-xl;
+}
+
+/* WhatsApp button pulse animation */
+@keyframes wa-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(37, 211, 102, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+  }
+}
+
+.wa-pulse {
+  animation: wa-pulse 2s infinite;
+}
+
+/* Prose rich text */
+.prose-hotel p {
+  color: var(--piedra);
+  line-height: 1.8;
+  margin-bottom: 1rem;
+}
+
+/* Image gradient overlay */
+.img-overlay::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(15, 77, 58, 0.7) 0%, transparent 60%);
+}
+
+/* Leafy pattern */
+.leafy-bg {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f4d3a' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}

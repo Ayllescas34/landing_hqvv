@@ -1,0 +1,44 @@
+# dependencies
+node_modules/
+
+# next.js
+.next/
+out/
+
+# build output
+build/
+
+# env files — NUNCA commitear credenciales
+.env
+.env.local
+.env.*.local
+.env.production
+
+# SQLite — base de datos local de desarrollo únicamente
+*.db
+*.db-shm
+*.db-wal
+
+# Imágenes locales de dev (en producción se usa Vercel Blob)
+public/media/
+
+# misc
+.DS_Store
+*.pem
+Thumbs.db
+
+# debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# vercel CLI
+.vercel
+
+# dev logs
+dev.log
+dev-log.txt
