@@ -68,28 +68,4 @@ export default buildConfig({
       token: process.env.BLOB_READ_WRITE_TOKEN || '',
     }),
   ],
-  // In production with PostgreSQL, Payload does NOT auto-migrate.
-  // We replicate pushDevSchema's logic here (without the interactive prompts)
-  // so tables are created on first deploy and kept in sync on schema changes.
-  onInit: async (payload) => {
-    if (!isPostgres) return
-    try {
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      const adapter = payload.db as any
-      const { pushSchema } = adapter.requireDrizzleKit()
-      const { apply, warnings } = await pushSchema(
-        adapter.schema,
-        adapter.drizzle,
-        adapter.schemaName ? [adapter.schemaName] : undefined,
-        adapter.tablesFilter ?? undefined,
-        adapter.extensions?.postgis ? ['postgis'] : undefined,
-      )
-      if (warnings?.length) {
-        payload.logger.warn({ msg: 'Schema push warnings (auto-accepted)', warnings })
-      }
-      await apply()
-    } catch (err) {
-      payload.logger.warn({ err, msg: 'Schema push skipped — run payload migrate if tables are missing' })
-    }
-  },
 })
