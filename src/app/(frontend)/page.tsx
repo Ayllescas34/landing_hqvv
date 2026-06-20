@@ -1,4 +1,10 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+
+// Never pre-render during build: Payload initializes the DB (migrations) on
+// first call, which exceeds Next.js's 60s static generation timeout.
+// The page renders fresh on every request, which is correct for CMS content.
+export const dynamic = 'force-dynamic'
+
 import { getPayload, type SanitizedConfig } from 'payload'
 import configPromise from '@payload-config'
 import { Hero } from '@/components/Hero'
