@@ -1,5 +1,6 @@
 import type { Metadata } from 'next'
 import { Playfair_Display, Inter, Cormorant_Garamond } from 'next/font/google'
+import { GoogleAnalytics } from '@next/third-parties/google'
 import '../globals.css'
 import { Navigation } from '@/components/Navigation'
 import { Footer } from '@/components/Footer'
@@ -89,6 +90,8 @@ export const metadata: Metadata = {
   },
 }
 
+const gaMeasurementId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+
 export default function FrontendLayout({ children }: { children: React.ReactNode }) {
   return (
     <html
@@ -101,6 +104,9 @@ export default function FrontendLayout({ children }: { children: React.ReactNode
         <Footer />
         <FloatingWhatsApp />
       </body>
+      {process.env.NODE_ENV === 'production' && gaMeasurementId && (
+        <GoogleAnalytics gaId={gaMeasurementId} />
+      )}
     </html>
   )
 }
