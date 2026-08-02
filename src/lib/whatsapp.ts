@@ -9,8 +9,12 @@ export const WA_MESSAGES = {
   room: (name: string) =>
     `Hola, me gustaría recibir información sobre la habitación ${name}.`,
   breakfast: (name: string) =>
-    `Hola, me gustaría conocer más sobre el desayuno ${name}.`,
+    `Hola. Me interesa obtener información sobre el desayuno: "${name}". ¿Podrían brindarme más información?`,
   experiences:
     'Hola, me gustaría conocer las recomendaciones y actividades disponibles cerca del hotel.',
   contact: 'Hola, me gustaría recibir información sobre Hotel Quinta Vista Verde.',
+  roomsInquiry:
+    'Hola, me gustaría conocer más sobre las habitaciones disponibles, tarifas y disponibilidad.',
+  breakfastsInquiry:
+    'Hola, me gustaría reservar o conocer más sobre la carta de desayunos del restaurante.',
 }

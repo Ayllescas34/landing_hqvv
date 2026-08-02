@@ -59,5 +59,44 @@ export const SiteSettings: GlobalConfig = {
       label: 'Puntuación Booking.com',
       defaultValue: '9.4',
     },
+    {
+      type: 'group',
+      name: 'checkInOut',
+      label: 'Check-in / Check-out',
+      fields: [
+        {
+          name: 'checkInTime',
+          type: 'text',
+          label: 'Hora Check-In',
+          defaultValue: '14:00 hrs',
+        },
+        {
+          name: 'checkOutTime',
+          type: 'text',
+          label: 'Hora Check-Out',
+          defaultValue: '12:00 hrs',
+        },
+        {
+          name: 'policiesText',
+          type: 'textarea',
+          label: 'Texto de políticas',
+        },
+        {
+          name: 'earlyCheckInText',
+          type: 'textarea',
+          label: 'Texto de ingreso temprano',
+        },
+        {
+          name: 'lateCheckOutText',
+          type: 'textarea',
+          label: 'Texto de salida tardía',
+        },
+        {
+          name: 'additionalInfo',
+          type: 'textarea',
+          label: 'Información adicional',
+        },
+      ],
+    },
   ],
 }

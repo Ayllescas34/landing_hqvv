@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { Instagram, Facebook, MessageCircle, Phone, MapPin } from 'lucide-react'
 import { buildWhatsAppLink, WA_MESSAGES } from '@/lib/whatsapp'
 
@@ -90,20 +91,20 @@ export function Footer() {
               <h4 className="font-playfair text-white text-lg font-semibold mb-4">El Hotel</h4>
               <div className="flex flex-col gap-2">
                 {[
-                  ['#nosotros', 'Sobre nosotros'],
-                  ['#habitaciones', 'Habitaciones'],
-                  ['#desayunos', 'Desayunos'],
-                  ['#galeria', 'Galería'],
-                  ['#experiencias', 'Experiencias'],
-                  ['#ubicacion', 'Ubicación'],
+                  ['/#nosotros', 'Sobre nosotros'],
+                  ['/habitaciones', 'Habitaciones'],
+                  ['/desayunos', 'Desayunos'],
+                  ['/#galeria', 'Galería'],
+                  ['/#experiencias', 'Experiencias'],
+                  ['/#ubicacion', 'Ubicación'],
                 ].map(([href, label]) => (
-                  <a
+                  <Link
                     key={href}
                     href={href}
                     className="text-white/60 hover:text-white text-sm transition-colors"
                   >
                     {label}
-                  </a>
+                  </Link>
                 ))}
               </div>
             </div>

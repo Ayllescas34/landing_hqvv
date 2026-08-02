@@ -1,0 +1,34 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tsx *)",
+      "Bash(node -e ' *)",
+      "Bash(cp scripts/seed-breakfasts-demo.ts scripts/seed-breakfasts-demo.mts)",
+      "Bash(rm -f scripts/seed-breakfasts-demo.ts scripts/seed-breakfasts-demo.mts)",
+      "Bash(rmdir scripts *)",
+      "Bash(node check_home.js)",
+      "Bash(node check_qa.js)",
+      "Bash(powershell -Command 'Get-NetTCPConnection -LocalPort 3000 -State Listen -ErrorAction SilentlyContinue | ForEach-Object { Stop-Process -Id $_.OwningProcess -Force }')",
+      "Bash(node check_redesign.js)",
+      "Bash(powershell -Command ' *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"home: %{http_code} \\(%{time_total}s\\)\\\\n\" --max-time 90 \"http://localhost:3000/\")",
+      "Bash(netstat -ano)",
+      "Bash(curl -s -o /tmp/home_body.html -w \"home: %{http_code} \\(%{time_total}s\\)\\\\n\" --max-time 240 \"http://localhost:3000/\")",
+      "Bash(taskkill //PID 26952 //F)",
+      "Bash(curl -s -o /tmp/home_body.html -w \"home: %{http_code} \\(%{time_total}s\\)\\\\n\" --max-time 90 \"http://localhost:3000/\")",
+      "Bash(DATABASE_URI=\"file:./hotel.db\" npm run dev)",
+      "Bash(taskkill //PID 12980 //F)",
+      "Bash(curl -s -o /tmp/home_body.html -w \"home: %{http_code} \\(%{time_total}s\\)\\\\n\" --max-time 90 \"http://localhost:3001/\")",
+      "Bash(curl -s -o /tmp/hab_body.html -w \"habitaciones: %{http_code} \\(%{time_total}s\\)\\\\n\" --max-time 90 \"http://localhost:3001/habitaciones\")",
+      "Bash(curl -s -o /tmp/des_body.html -w \"desayunos: %{http_code} \\(%{time_total}s\\)\\\\n\" --max-time 90 \"http://localhost:3001/desayunos\")",
+      "Bash(curl -s -o /tmp/admin_body.html -w \"admin promos: %{http_code} \\(%{time_total}s\\)\\\\n\" --max-time 90 \"http://localhost:3001/admin/collections/promotions\")",
+      "Bash(echo \"=== Home: count of 'Desayuno' section markers ===\"; grep -o 'id=\"desayunos\"' /tmp/home_body.html | wc -l *)",
+      "Read(//tmp/**)",
+      "Bash(curl -s --max-time 30 \"http://localhost:3001/api/promotions?limit=5\")",
+      "Bash(grep -o \"Modo de visualizaci[^\\\\\"<]*\" /tmp/admin_body.html | head -3 *)",
+      "Bash(curl -s -o /tmp/admin_create.html -w \"create: %{http_code} \\(%{time_total}s\\)\\\\n\" --max-time 60 \"http://localhost:3001/admin/collections/promotions/create\")",
+      "Bash(taskkill //PID 40044 //F)"
+    ]
+  }
+}

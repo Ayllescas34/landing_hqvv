@@ -10,6 +10,14 @@ interface LocationProps {
     googleMapsUrl?: string | null
     wazeUrl?: string | null
     mapEmbedUrl?: string | null
+    checkInOut?: {
+      checkInTime?: string | null
+      checkOutTime?: string | null
+      policiesText?: string | null
+      earlyCheckInText?: string | null
+      lateCheckOutText?: string | null
+      additionalInfo?: string | null
+    } | null
   } | null
 }
 
@@ -25,6 +33,14 @@ export function LocationSection({ settings }: LocationProps) {
   const wazeUrl =
     settings?.wazeUrl || 'https://waze.com/ul?q=Antigua+Guatemala'
   const mapEmbed = settings?.mapEmbedUrl || DEFAULT_MAP_EMBED
+  const checkInTime = settings?.checkInOut?.checkInTime || '14:00 hrs'
+  const checkOutTime = settings?.checkInOut?.checkOutTime || '12:00 hrs'
+  const additionalCheckInfo = [
+    settings?.checkInOut?.policiesText,
+    settings?.checkInOut?.earlyCheckInText,
+    settings?.checkInOut?.lateCheckOutText,
+    settings?.checkInOut?.additionalInfo,
+  ].filter(Boolean)
 
   return (
     <section id="ubicacion" className="section-padding bg-white">
@@ -113,8 +129,17 @@ export function LocationSection({ settings }: LocationProps) {
                   </div>
                   <div>
                     <p className="font-semibold text-madera text-sm mb-0.5">Check-in / Check-out</p>
-                    <p className="text-piedra text-sm">Check-in: 14:00 hrs</p>
-                    <p className="text-piedra text-sm">Check-out: 12:00 hrs</p>
+                    <p className="text-piedra text-sm">Check-in: {checkInTime}</p>
+                    <p className="text-piedra text-sm">Check-out: {checkOutTime}</p>
+                    {additionalCheckInfo.length > 0 && (
+                      <div className="mt-1.5 flex flex-col gap-0.5">
+                        {additionalCheckInfo.map((text, i) => (
+                          <p key={i} className="text-piedra text-xs leading-relaxed">
+                            {text}
+                          </p>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </div>
               </div>

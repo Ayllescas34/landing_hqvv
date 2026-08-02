@@ -11,12 +11,16 @@ import { Users } from './src/collections/Users'
 import { Media } from './src/collections/Media'
 import { Rooms } from './src/collections/Rooms'
 import { Breakfasts } from './src/collections/Breakfasts'
+import { BreakfastCategories } from './src/collections/BreakfastCategories'
+import { ALaCarteBreakfasts } from './src/collections/ALaCarteBreakfasts'
+import { Promotions } from './src/collections/Promotions'
 import { Gallery } from './src/collections/Gallery'
 import { Experiences } from './src/collections/Experiences'
 import { Reviews } from './src/collections/Reviews'
 import { SiteSettings } from './src/globals/SiteSettings'
 import { HeroContent } from './src/globals/HeroContent'
 import { AboutContent } from './src/globals/AboutContent'
+import { BreakfastsContent } from './src/globals/BreakfastsContent'
 
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
@@ -36,8 +40,19 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
-  collections: [Users, Media, Rooms, Breakfasts, Gallery, Experiences, Reviews],
-  globals: [SiteSettings, HeroContent, AboutContent],
+  collections: [
+    Users,
+    Media,
+    Rooms,
+    Breakfasts,
+    BreakfastCategories,
+    ALaCarteBreakfasts,
+    Promotions,
+    Gallery,
+    Experiences,
+    Reviews,
+  ],
+  globals: [SiteSettings, HeroContent, AboutContent, BreakfastsContent],
   editor: lexicalEditor(),
   secret: payloadSecret,
   typescript: {
