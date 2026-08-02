@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion'
 import Image from 'next/image'
-import { Users, MessageCircle, BedDouble } from 'lucide-react'
+import Link from 'next/link'
+import { Users, MessageCircle, BedDouble, ArrowRight } from 'lucide-react'
 import { buildWhatsAppLink, WA_MESSAGES } from '@/lib/whatsapp'
 
 interface Room {
@@ -143,8 +144,15 @@ function RoomCard({ room }: { room: Room }) {
   )
 }
 
-export function RoomsSection({ rooms }: { rooms: Room[] }) {
-  const displayRooms = rooms.length > 0 ? rooms : FALLBACK_ROOMS
+export function RoomsSection({
+  rooms,
+  mode = 'full',
+}: {
+  rooms: Room[]
+  mode?: 'preview' | 'full'
+}) {
+  const allRooms = rooms.length > 0 ? rooms : FALLBACK_ROOMS
+  const displayRooms = mode === 'preview' ? allRooms.slice(0, 3) : allRooms
 
   return (
     <section id="habitaciones" className="section-padding bg-crema leafy-bg">
@@ -176,6 +184,24 @@ export function RoomsSection({ rooms }: { rooms: Room[] }) {
             <RoomCard key={i} room={room} />
           ))}
         </div>
+
+        {mode === 'preview' && (
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.7 }}
+            className="text-center mt-12"
+          >
+            <Link
+              href="/habitaciones"
+              className="group inline-flex items-center gap-2 bg-verde-bosque hover:bg-verde-jardin text-white font-semibold text-sm px-7 py-3.5 rounded-full transition-colors duration-300"
+            >
+              Ver todas las habitaciones
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </motion.div>
+        )}
       </div>
     </section>
   )

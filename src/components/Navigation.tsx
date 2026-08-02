@@ -1,18 +1,19 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Link from 'next/link'
 import { Menu, X, MessageCircle } from 'lucide-react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { buildWhatsAppLink, WA_MESSAGES } from '@/lib/whatsapp'
 
 const NAV_LINKS = [
-  { href: '#nosotros', label: 'Nosotros' },
-  { href: '#habitaciones', label: 'Habitaciones' },
-  { href: '#desayunos', label: 'Desayunos' },
-  { href: '#galeria', label: 'Galería' },
-  { href: '#experiencias', label: 'Experiencias' },
-  { href: '#ubicacion', label: 'Ubicación' },
-  { href: '#contacto', label: 'Contacto' },
+  { href: '/#nosotros', label: 'Nosotros' },
+  { href: '/habitaciones', label: 'Habitaciones' },
+  { href: '/desayunos', label: 'Desayunos' },
+  { href: '/#galeria', label: 'Galería' },
+  { href: '/#experiencias', label: 'Experiencias' },
+  { href: '/#ubicacion', label: 'Ubicación' },
+  { href: '/#contacto', label: 'Contacto' },
 ]
 
 export function Navigation() {
@@ -43,25 +44,25 @@ export function Navigation() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
           {/* Logo */}
-          <a href="#" className="group flex flex-col leading-tight" onClick={close}>
+          <Link href="/" className="group flex flex-col leading-tight" onClick={close}>
             <span className={`font-cormorant text-xs tracking-[0.2em] uppercase transition-colors ${scrolled ? 'text-verde-jardin' : 'text-white/80'}`}>
               Hotel Boutique
             </span>
             <span className={`font-playfair text-lg font-semibold transition-colors ${scrolled ? 'text-verde-bosque' : 'text-white'}`}>
               Quinta Vista Verde
             </span>
-          </a>
+          </Link>
 
           {/* Desktop links */}
           <div className="hidden lg:flex items-center gap-7">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className={`text-sm font-medium tracking-wide transition-colors hover:text-verde-jardin ${scrolled ? 'text-piedra' : 'text-white/90'}`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
             <a
               href={waLink}
@@ -131,17 +132,20 @@ export function Navigation() {
               {/* Links */}
               <nav className="flex-1 overflow-y-auto px-4 py-4">
                 {NAV_LINKS.map((link, i) => (
-                  <motion.a
+                  <motion.div
                     key={link.href}
-                    href={link.href}
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: i * 0.05 + 0.1 }}
-                    className="flex items-center text-piedra hover:text-verde-bosque hover:bg-verde-bosque/5 font-medium py-4 px-3 rounded-xl transition-colors text-base border-b border-beige/60 last:border-0"
-                    onClick={close}
                   >
-                    {link.label}
-                  </motion.a>
+                    <Link
+                      href={link.href}
+                      className="flex items-center text-piedra hover:text-verde-bosque hover:bg-verde-bosque/5 font-medium py-4 px-3 rounded-xl transition-colors text-base border-b border-beige/60 last:border-0"
+                      onClick={close}
+                    >
+                      {link.label}
+                    </Link>
+                  </motion.div>
                 ))}
               </nav>
 

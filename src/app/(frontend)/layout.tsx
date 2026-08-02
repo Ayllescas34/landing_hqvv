@@ -29,7 +29,7 @@ const cormorant = Cormorant_Garamond({
 const siteUrl = process.env.NEXT_PUBLIC_SERVER_URL || 'http://localhost:3000'
 const siteTitle = 'Hotel Quinta Vista Verde — Antigua Guatemala'
 const siteDescription =
-  'Descubre nuestro hotel familiar en Antigua Guatemala. Habitaciones confortables, desayunos a la carta, jardines exuberantes y vista al Volcán de Agua.'
+  'Descubre nuestro hotel familiar en Antigua Guatemala. Habitaciones confortables, jardines exuberantes, vista al Volcán de Agua y una carta de desayunos abierta a huéspedes y visitantes.'
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
@@ -45,6 +45,8 @@ export const metadata: Metadata = {
     'Quinta Vista Verde',
     'volcán de agua Antigua',
     'hotel jardines Antigua',
+    'desayunos a la carta Antigua Guatemala',
+    'restaurante desayunos Antigua',
   ],
   authors: [{ name: 'Hotel Quinta Vista Verde' }],
   creator: 'Hotel Quinta Vista Verde',
