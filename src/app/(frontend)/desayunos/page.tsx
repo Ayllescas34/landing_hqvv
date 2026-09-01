@@ -43,12 +43,15 @@ async function getBreakfastsPageData() {
     const payload = await getPayload({
       config: configPromise as unknown as Promise<SanitizedConfig>,
     })
-    const [alaCarteBreakfasts, breakfastCategories, breakfastsContent] = await Promise.all([
-      payload.find({ collection: 'a-la-carte-breakfasts', limit: 50, sort: 'order' }),
-      payload.find({ collection: 'breakfast-categories', limit: 20, sort: 'order' }),
-      payload.findGlobal({ slug: 'breakfasts-content' }),
-    ])
+    const [includedBreakfasts, alaCarteBreakfasts, breakfastCategories, breakfastsContent] =
+      await Promise.all([
+        payload.find({ collection: 'included-breakfasts', limit: 50, sort: 'order' }),
+        payload.find({ collection: 'a-la-carte-breakfasts', limit: 50, sort: 'order' }),
+        payload.find({ collection: 'breakfast-categories', limit: 20, sort: 'order' }),
+        payload.findGlobal({ slug: 'breakfasts-content' }),
+      ])
     return {
+      includedBreakfasts: includedBreakfasts.docs as any[],
       alaCarteBreakfasts: alaCarteBreakfasts.docs as any[],
       breakfastCategories: breakfastCategories.docs as any[],
       breakfastsContent: breakfastsContent as any,
@@ -107,6 +110,7 @@ export default async function DesayunosPage() {
       />
       <BreakfastsSection
         content={data?.breakfastsContent}
+        includedBreakfasts={data?.includedBreakfasts ?? []}
         breakfasts={data?.alaCarteBreakfasts ?? []}
         categories={data?.breakfastCategories ?? []}
       />

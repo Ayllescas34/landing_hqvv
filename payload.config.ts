@@ -13,6 +13,7 @@ import { Rooms } from './src/collections/Rooms'
 import { Breakfasts } from './src/collections/Breakfasts'
 import { BreakfastCategories } from './src/collections/BreakfastCategories'
 import { ALaCarteBreakfasts } from './src/collections/ALaCarteBreakfasts'
+import { IncludedBreakfasts } from './src/collections/IncludedBreakfasts'
 import { Promotions } from './src/collections/Promotions'
 import { Gallery } from './src/collections/Gallery'
 import { Experiences } from './src/collections/Experiences'
@@ -47,6 +48,7 @@ export default buildConfig({
     Breakfasts,
     BreakfastCategories,
     ALaCarteBreakfasts,
+    IncludedBreakfasts,
     Promotions,
     Gallery,
     Experiences,
