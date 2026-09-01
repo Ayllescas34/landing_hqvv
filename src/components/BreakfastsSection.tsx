@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { IncludedBreakfastBlock } from './IncludedBreakfastBlock'
 import { ALaCarteMenu } from './ALaCarteMenu'
-import type { ALaCarteBreakfast } from './BreakfastDetailModal'
+import type { BreakfastCardItem } from './BreakfastCard'
 
 interface BreakfastsContentData {
   header?: {
@@ -31,18 +31,15 @@ interface BreakfastCategory {
   name: string
 }
 
-interface BreakfastItem extends ALaCarteBreakfast {
-  available?: boolean | null
-  featured?: boolean | null
-}
-
 export function BreakfastsSection({
   content,
+  includedBreakfasts,
   breakfasts,
   categories,
 }: {
   content?: BreakfastsContentData | null
-  breakfasts: BreakfastItem[]
+  includedBreakfasts: BreakfastCardItem[]
+  breakfasts: BreakfastCardItem[]
   categories: BreakfastCategory[]
 }) {
   const eyebrow = content?.header?.sectionEyebrow || 'Carta de desayunos'
@@ -72,7 +69,7 @@ export function BreakfastsSection({
           <p className="text-piedra text-base md:text-lg max-w-xl mx-auto">{description}</p>
         </motion.div>
 
-        <IncludedBreakfastBlock content={content?.included} />
+        <IncludedBreakfastBlock content={content?.included} breakfasts={includedBreakfasts} />
 
         <div className="botanical-divider mb-14" />
 
